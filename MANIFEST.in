@@ -1,0 +1,1 @@
+recursive-include ne_agent/data *.txt

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="ne-agent",
-    version="0.1.3",
+    version="0.1.4",
     author="MWire Labs",
     author_email="connect@mwirelabs.com",
     description="First open-source AI agent for Northeast Indian languages",
