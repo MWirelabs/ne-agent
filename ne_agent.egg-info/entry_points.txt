@@ -1,0 +1,2 @@
+[console_scripts]
+ne-agent = ne_agent.cli:main

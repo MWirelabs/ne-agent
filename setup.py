@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="ne-agent",
-    version="0.1.0",
+    version="0.1.2",
     author="MWire Labs",
     author_email="connect@mwirelabs.com",
     description="First open-source AI agent for Northeast Indian languages",
@@ -10,11 +10,20 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/MWirelabs/ne-agent",
     packages=find_packages(),
-    install_requires=open("requirements.txt").read().splitlines(),
-    python_requires=">=3.9",
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
+    install_requires=[
+        "ne-lid",
+        "ne-embed",
+        "faiss-cpu",
+        "rich",
+        "requests",
+        "pandas",
+        "openpyxl",
     ],
+    entry_points={
+        "console_scripts": [
+            "ne-agent=ne_agent.cli:main",
+        ],
+    },
+    python_requires=">=3.9",
+    license="CC-BY-4.0",
 )
