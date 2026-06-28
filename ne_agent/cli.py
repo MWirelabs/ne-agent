@@ -4,11 +4,9 @@ from ne_agent.tui import boot_screen, print_status, print_result, console
 from rich.text import Text
 
 def load_corpus():
-    import random
-    random.seed(42)
     corpus = {}
-    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
-    data_dir = os.path.abspath(data_dir)
+    # Look for data next to where cli.py is installed
+    data_dir = os.path.join(os.path.dirname(__file__), "data")
     for lang in ["assamese", "khasi", "mizo", "garo"]:
         path = os.path.join(data_dir, f"{lang}_mono_500.txt")
         if os.path.exists(path):
@@ -16,7 +14,7 @@ def load_corpus():
                 corpus[lang] = [line.strip() for line in f if line.strip()]
             console.print(Text(f"  loaded {lang}: {len(corpus[lang])} sentences", style="dim white"))
         else:
-            console.print(Text(f"  skipped {lang}: not found at {path}", style="dim white"))
+            console.print(Text(f"  skipped {lang}: not found", style="dim white"))
     return corpus
 
 def main():
@@ -24,6 +22,9 @@ def main():
     console.print(Text("  Loading corpus and building index...", style="dim white"))
     agent = NEAgent()
     corpus = load_corpus()
+    if not corpus:
+        console.print(Text("  No corpus found. Add txt files to ne_agent/data/", style="bold red"))
+        return
     agent.load_corpus(corpus)
     print_status(agent.retriever.index.ntotal, agent.llm.model)
     while True:

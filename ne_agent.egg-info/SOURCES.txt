@@ -13,3 +13,7 @@ ne_agent.egg-info/dependency_links.txt
 ne_agent.egg-info/entry_points.txt
 ne_agent.egg-info/requires.txt
 ne_agent.egg-info/top_level.txt
+ne_agent/data/assamese_mono_500.txt
+ne_agent/data/garo_mono_500.txt
+ne_agent/data/khasi_mono_500.txt
+ne_agent/data/mizo_mono_500.txt

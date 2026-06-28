@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="ne-agent",
-    version="0.1.2",
+    version="0.1.3",
     author="MWire Labs",
     author_email="connect@mwirelabs.com",
     description="First open-source AI agent for Northeast Indian languages",
@@ -10,6 +10,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/MWirelabs/ne-agent",
     packages=find_packages(),
+    package_data={"ne_agent": ["data/*.txt"]},
     install_requires=[
         "ne-lid",
         "ne-embed",
