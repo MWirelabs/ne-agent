@@ -22,3 +22,11 @@ Answer:"""
             "stream": False
         })
         return response.json()["response"]
+
+    def generate_raw(self, prompt: str) -> str:
+        response = requests.post(f"{self.host}/api/generate", json={
+            "model": self.model,
+            "prompt": prompt,
+            "stream": False
+        })
+        return response.json()["response"]
