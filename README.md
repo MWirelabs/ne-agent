@@ -1,7 +1,5 @@
 # NE-Agent
-
 **Open-source AI agent for Northeast Indian languages.**
-
 Built on the NE-Stack by [MWire Labs](https://mwirelabs.com), Shillong.
 
 ---
@@ -29,7 +27,7 @@ ne-agent
 
 ## What is NE-Agent?
 
-NE-Agent is a terminal-based agentic assistant that speaks Northeast India's indigenous languages. It automatically detects the input language, retrieves relevant context from a multilingual corpus, and generates responses — all running locally with no API keys required.
+NE-Agent is a terminal-based agentic assistant that speaks Northeast India's indigenous languages. It automatically detects the input language, then routes each query to the right tool — retrieval-augmented search, Khasi-English translation, or speech transcription — and generates responses, all running locally with no API keys required.
 
 ---
 
@@ -38,8 +36,11 @@ NE-Agent is a terminal-based agentic assistant that speaks Northeast India's ind
 | Component | Role | Model |
 |---|---|---|
 | NE-LID | Language identification | fastText, 11 languages, 99.09% accuracy |
+| Tool Router | Dynamic tool selection | qwen2.5:1.5b (search / translate / transcribe) |
 | NE-Embed | Multilingual embeddings | LaBSE fine-tuned, 768-dim |
 | FAISS | Vector retrieval | IndexFlatIP, cosine similarity |
+| NLLB (Khasi) | Khasi-English translation | Fine-tuned NLLB |
+| NE-ASR | Speech transcription | Whisper-medium, 8 languages |
 | Ollama | Local LLM | qwen2.5:1.5b (default) |
 
 ---
@@ -47,6 +48,8 @@ NE-Agent is a terminal-based agentic assistant that speaks Northeast India's ind
 ## Supported Languages
 
 Assamese · Khasi · Garo · Mizo · Meitei · Bodo · Kokborok · Nyishi · Nagamese · English
+
+Translation currently supports Khasi. Transcription supports Khasi, Garo, Mizo, Nagamese, Kokborok, Assamese, Chakma, and Wancho.
 
 ---
 
@@ -60,7 +63,7 @@ The default corpus ships 500 monolingual sentences each for Assamese, Khasi, Miz
 
 - Python 3.9+
 - [Ollama](https://ollama.com) with `qwen2.5:1.5b` pulled
-- 4GB RAM minimum for CPU inference
+- GPU recommended for translation/transcription tools; search works on CPU
 
 ---
 
@@ -69,6 +72,7 @@ The default corpus ships 500 monolingual sentences each for Assamese, Khasi, Miz
 - PyPI: [pypi.org/project/ne-agent](https://pypi.org/project/ne-agent/)
 - NE-Embed: [huggingface.co/MWirelabs/ne-embed](https://huggingface.co/MWirelabs/ne-embed)
 - NE-LID: [huggingface.co/MWirelabs/ne-lid](https://huggingface.co/MWirelabs/ne-lid)
+- NE-ASR: [huggingface.co/MWirelabs/ne-asr](https://huggingface.co/MWirelabs/ne-asr)
 - MWire Labs: [mwirelabs.com](https://mwirelabs.com)
 
 ---
